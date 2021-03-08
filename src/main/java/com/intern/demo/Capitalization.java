@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
+
 @Slf4j
 public class Capitalization {
 
@@ -17,11 +19,8 @@ public class Capitalization {
 
         List<String> input_list = Arrays.asList(input.split("\\s+"));
 
-        // Convert all to lowercase
-        input_list = input_list.stream().map(String::toLowerCase).collect(Collectors.toList());
-
         // Convert first letter to uppercase
-        input_list = input_list.stream().map(word -> (Character.toUpperCase(word.charAt(0)) + word.substring(1))).collect(Collectors.toList());
+        input_list = input_list.stream().map(word -> (Character.toUpperCase(toLowerCase(word).charAt(0)) + toLowerCase(word).substring(1))).collect(Collectors.toList());
 
         return String.join(" ", input_list);
     }
