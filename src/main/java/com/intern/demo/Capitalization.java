@@ -20,7 +20,7 @@ public class Capitalization {
         // Convert all to lowercase
         input_list = input_list.stream().map(String::toLowerCase).collect(Collectors.toList());
 
-        // Convert all
+        // Convert first letter to uppercase
         input_list = input_list.stream().map(word -> (Character.toUpperCase(word.charAt(0)) + word.substring(1))).collect(Collectors.toList());
 
         return String.join(" ", input_list);
@@ -32,7 +32,7 @@ public class Capitalization {
         // TODO OUTPUT: Map<String, List<String>>
 
         return books.stream()
-                .collect(Collectors.groupingBy(Book::getAuthor,
-                        Collectors.mapping(Book::getTitle, Collectors.toList())));
+                .collect(Collectors.groupingBy(book -> capitalize(book.getAuthor()),
+                        Collectors.mapping(book -> capitalize(book.getTitle()), Collectors.toList())));
     }
 }
