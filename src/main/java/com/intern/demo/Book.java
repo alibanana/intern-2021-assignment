@@ -7,5 +7,4 @@ import lombok.Data;
 public class Book {
     private String author;
     private String title;
-    private BookType type;
 }
