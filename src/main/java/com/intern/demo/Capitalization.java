@@ -1,7 +1,6 @@
 package com.intern.demo;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,9 +24,6 @@ public class Capitalization {
         input_list = input_list.stream().map(word -> (Character.toUpperCase(word.charAt(0)) + word.substring(1))).collect(Collectors.toList());
 
         return String.join(" ", input_list);
-
-        // Another really easy Method
-//        return WordUtils.capitalizeFully(input);
     }
 
     public static Map<String, List<String>> convertToMap (List<Book> books) {
