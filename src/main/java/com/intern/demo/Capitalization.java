@@ -1,6 +1,7 @@
 package com.intern.demo;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,12 +18,16 @@ public class Capitalization {
         //TODO Input = "I want to lEARN JAVA"
         //TODO Output = "I Want To Learn Java"
 
-        List<String> input_list = Arrays.asList(input.split("\\s+"));
+        // Split & convert to lower.
+        List<String> input_list = Arrays.asList(toLowerCase(input).split("\\s+"));
 
-        // Convert first letter to uppercase
-        input_list = input_list.stream().map(word -> (Character.toUpperCase(toLowerCase(word).charAt(0)) + toLowerCase(word).substring(1))).collect(Collectors.toList());
+        // Convert first letter to upper.
+        input_list = input_list.stream().map(word -> (Character.toUpperCase(word.charAt(0)) + word.substring(1))).collect(Collectors.toList());
 
         return String.join(" ", input_list);
+
+        // Another really easy Method
+//        return WordUtils.capitalizeFully(input);
     }
 
     public static Map<String, List<String>> convertToMap (List<Book> books) {
